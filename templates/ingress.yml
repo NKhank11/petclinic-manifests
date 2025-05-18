@@ -1,0 +1,40 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: {{ .Values.ingress.name | default "spring-petclinic-ingress" }}
+  namespace: {{ .Values.namespace }}
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: {{ .Values.namespace }}-{{ .Values.ingress.host | default "dev-petclinic.cloud" }}
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: {{ .Values.ingress.apiGatewayName | default "api-gateway" }}
+            port:
+              number: {{ .Values.ingress.apiGatewayPort | default 8080 }}
+  - host: admin.{{ .Values.namespace }}-{{ .Values.ingress.host | default "dev-petclinic.cloud" }}
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: {{ .Values.ingress.adminServiceName | default "admin-server" }}
+            port:
+              number: {{ .Values.ingress.adminServicePort | default 9090 }}
+  - host: eureka.{{ .Values.namespace }}-{{ .Values.ingress.host | default "dev-petclinic.cloud" }}
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: {{ .Values.ingress.eurekaServiceName | default "discovery-server" }}
+            port:
+              number: {{ .Values.ingress.eurekaServicePort | default 8761 }}

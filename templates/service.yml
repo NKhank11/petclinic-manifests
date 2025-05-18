@@ -1,0 +1,19 @@
+{{- range $name, $service := .Values.services }}
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ $name }}
+  labels:
+    app: spring-petclinic-visits-service
+  namespace: {{ $.Values.namespace }}
+spec:
+  ports:
+    - port: {{ $service.ports.port | default 0000}}
+      targetPort: {{ $service.ports.targetPort | default 0000}}
+      protocol: TCP
+      name: tcp
+  selector:
+    app: {{ $name }}
+  type: ClusterIP
+---
+{{- end }}

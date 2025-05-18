@@ -1,0 +1,34 @@
+{{- range $name, $service := .Values.services }}
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ $name }}-deployment
+  labels:
+    app: {{ $name }}
+  namespace: {{ $.Values.namespace }}
+spec:
+  revisionHistoryLimit: 2
+  replicas: {{ $service.replicas | default 1 }}
+  selector:
+    matchLabels:
+      app: {{ $name }}
+  template:
+    metadata:
+      labels:
+        app: {{ $name }}
+    spec:
+      {{- if $service.depend_on }}
+      initContainers:
+        - name: check-{{ $name }}
+          image: busybox:latest
+          command: ['sh', '-c', 'until wget --spider -q http://{{ $service.depend_on.name }}:{{ $service.depend_on.port }}; do echo waiting for config-server; sleep 3; done;']
+      {{- end }}
+      containers:
+        - name: {{ $name }}
+          image: "{{ $service.dockerRepository | default $.Values.docker.repository }}/{{ $service.image.name }}:{{ $service.image.tag | default "latest" }}"
+          imagePullPolicy: "{{ $.Values.imagePullPolicy | default "Always"}}"
+          ports:
+            - containerPort: {{ $service.ports.targetPort | default 0 }}
+          {{- if $service.env }}
+---
+{{- end }}

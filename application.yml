@@ -1,0 +1,22 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: pet-clinic-app-of-apps
+  namespace: argocd
+spec:
+  project: default
+
+  source:
+    repoURL: 'https://github.com/kiin21/petclinic-gitops.git'
+    targetRevision: HEAD
+    path: apps                               # child app manifests directory
+  destination:
+    server: 'https://kubernetes.default.svc' # Kubernetes cluster API server
+    namespace: argocd                        # Namespace of ArgoCD
+
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+    automated:
+      prune: true
+      selfHeal: true

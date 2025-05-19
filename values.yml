@@ -18,9 +18,9 @@ dependOnEureka: &dependOnEureka
   name: discovery-server
   port: 8761
 
-activeProfileEnv: &activeProfileEnv
-  name: SPRING_PROFILES_ACTIVE
-  value: docker
+configServerEnv: &configServerEnv
+  name: CONFIG_SERVER_URL
+  value: http://config-server:8888
 
 defaultAutoscaling: &defaultAutoscaling
   minReplicas: 1
@@ -48,7 +48,7 @@ services:
       name: config-server
       port: 8888
     env: 
-      - *activeProfileEnv
+      - *configServerEnv
 
   admin-server:
     ports:
@@ -58,7 +58,7 @@ services:
       name: spring-petclinic-admin-server
     depend_on: *dependOnEureka
     env: 
-      - *activeProfileEnv
+      - *configServerEnv
 
   customers-service:
     ports:
@@ -70,7 +70,7 @@ services:
     autoscaling:
       <<: *defaultAutoscaling
     env: 
-      - *activeProfileEnv
+      - *configServerEnv
 
   visits-service:
     ports:
@@ -82,7 +82,7 @@ services:
     autoscaling:
       <<: *defaultAutoscaling
     env: 
-      - *activeProfileEnv
+      - *configServerEnv
 
   vets-service:
     ports:
@@ -94,7 +94,7 @@ services:
     autoscaling:
       <<: *defaultAutoscaling
     env: 
-      - *activeProfileEnv
+      - *configServerEnv
 
   genai-service:
     ports:
@@ -106,7 +106,7 @@ services:
     autoscaling:
       <<: *defaultAutoscaling
     env: 
-      - *activeProfileEnv
+      - *configServerEnv
 
   api-gateway:
     ports:
@@ -118,7 +118,7 @@ services:
     autoscaling:
       <<: *defaultAutoscaling
     env: 
-      - *activeProfileEnv
+      - *configServerEnv
 
   tracing-server:
     dockerRepository: openzipkin
@@ -127,3 +127,5 @@ services:
       targetPort: 9411
     image:
       name: zipkin
+    env: 
+      - *configServerEnv 

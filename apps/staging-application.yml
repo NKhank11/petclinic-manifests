@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: pet-clinic-dev
+  name: pet-clinic-staging
   namespace: argocd
 spec:
   project: default
@@ -13,11 +13,11 @@ spec:
     helm:
       valueFiles:
         - values.yml                   # Default values
-        - environments/staging-values.yml  # Dev-specific overrides
+        - environments/staging-values.yml  # Staging-specific overrides
 
   destination:
     server: 'https://kubernetes.default.svc' # Kubernetes cluster API server
-    namespace: dev                          # Namespace for the dev environment
+    namespace: Staging                          # Namespace for the staging environment
 
   syncPolicy:
     syncOptions:

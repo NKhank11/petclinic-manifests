@@ -1,47 +1,47 @@
-# {{- range $name, $service := .Values.services }}
-# {{- if $service.autoscaling }}
-# apiVersion: autoscaling/v2
-# kind: HorizontalPodAutoscaler
-# metadata:
-#   name: {{ $name }}-hpa
-#   namespace: {{ $.Values.namespace }}
-# spec:
-#   scaleTargetRef:
-#     apiVersion: apps/v1
-#     kind: Deployment
-#     name: {{ $name }}
-#   minReplicas: {{ $service.autoscaling.minReplicas }}
-#   maxReplicas: {{ $service.autoscaling.maxReplicas }}
-#   metrics:
-#     {{- if $service.autoscaling.targetCPUUtilizationPercentage }}
-#     - type: Resource
-#       resource:
-#         name: cpu
-#         target:
-#           type: Utilization
-#           averageUtilization: {{ $service.autoscaling.targetCPUUtilizationPercentage }}
-#     {{- end }}
-#     {{- if $service.autoscaling.targetMemoryUtilizationPercentage }}
-#     - type: Resource
-#       resource:
-#         name: memory
-#         target:
-#           type: Utilization
-#           averageUtilization: {{ $service.autoscaling.targetMemoryUtilizationPercentage }}
-#     {{- end }}
-#   behavior:
-#     scaleUp:
-#       stabilizationWindowSeconds: {{ $service.autoscaling.scaleUpStabilizationWindowSeconds | default 60 }}
-#       policies:
-#       - type: Percent
-#         value: {{ $service.autoscaling.scaleUpPercent | default 100 }}
-#         periodSeconds: {{ $service.autoscaling.scaleUpPeriodSeconds | default 15 }}
-#     scaleDown:
-#       stabilizationWindowSeconds: {{ $service.autoscaling.scaleDownStabilizationWindowSeconds | default 300 }}
-#       policies:
-#       - type: Percent
-#         value: {{ $service.autoscaling.scaleDownPercent | default 100 }}
-#         periodSeconds: {{ $service.autoscaling.scaleDownPeriodSeconds | default 15 }}
-# ---
-# {{- end }}
-# {{- end }}
+{{- range $name, $service := .Values.services }}
+{{- if $service.autoscaling }}
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: {{ $name }}-hpa
+  namespace: {{ $.Values.namespace }}
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: {{ $name }}
+  minReplicas: {{ $service.autoscaling.minReplicas }}
+  maxReplicas: {{ $service.autoscaling.maxReplicas }}
+  metrics:
+    {{- if $service.autoscaling.targetCPUUtilizationPercentage }}
+    - type: Resource
+      resource:
+        name: cpu
+        target:
+          type: Utilization
+          averageUtilization: {{ $service.autoscaling.targetCPUUtilizationPercentage }}
+    {{- end }}
+    {{- if $service.autoscaling.targetMemoryUtilizationPercentage }}
+    - type: Resource
+      resource:
+        name: memory
+        target:
+          type: Utilization
+          averageUtilization: {{ $service.autoscaling.targetMemoryUtilizationPercentage }}
+    {{- end }}
+  behavior:
+    scaleUp:
+      stabilizationWindowSeconds: {{ $service.autoscaling.scaleUpStabilizationWindowSeconds | default 60 }}
+      policies:
+      - type: Percent
+        value: {{ $service.autoscaling.scaleUpPercent | default 100 }}
+        periodSeconds: {{ $service.autoscaling.scaleUpPeriodSeconds | default 15 }}
+    scaleDown:
+      stabilizationWindowSeconds: {{ $service.autoscaling.scaleDownStabilizationWindowSeconds | default 300 }}
+      policies:
+      - type: Percent
+        value: {{ $service.autoscaling.scaleDownPercent | default 100 }}
+        periodSeconds: {{ $service.autoscaling.scaleDownPeriodSeconds | default 15 }}
+---
+{{- end }}
+{{- end }}

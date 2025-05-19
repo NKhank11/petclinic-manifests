@@ -2,7 +2,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ $name }}-deployment
+  name: {{ $name }}
   labels:
     app: {{ $name }}
   namespace: {{ $.Values.namespace }}
@@ -29,6 +29,5 @@ spec:
           imagePullPolicy: "{{ $.Values.imagePullPolicy | default "Always"}}"
           ports:
             - containerPort: {{ $service.ports.targetPort | default 0 }}
-          {{- if $service.env }}
 ---
 {{- end }}

@@ -1,6 +1,6 @@
 namespace: staging
 
-imageTag: &tag v1.0.4
+imageTag: &tag v1.0
 
 services:
   config-server:

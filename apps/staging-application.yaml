@@ -17,7 +17,7 @@ spec:
 
   destination:
     server: 'https://kubernetes.default.svc' # Kubernetes cluster API server
-    namespace: Staging                          # Namespace for the staging environment
+    namespace: staging                          # Namespace for the staging environment
 
   syncPolicy:
     syncOptions:

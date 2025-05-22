@@ -18,7 +18,7 @@ spec:
             name: {{ .Values.ingress.apiGatewayName | default "api-gateway" }}
             port:
               number: {{ .Values.ingress.apiGatewayPort | default 8080 }}
-  - host: admin.{{ .Values.namespace }}-{{ .Values.ingress.host | default "dev-petclinic.cloud" }}
+  - host: admin.{{ .Values.namespace }}-{{ .Values.ingress.host | default "petclinic.cloud" }}
     http:
       paths:
       - path: /
@@ -28,7 +28,7 @@ spec:
             name: {{ .Values.ingress.adminServiceName | default "admin-server" }}
             port:
               number: {{ .Values.ingress.adminServicePort | default 9090 }}
-  - host: eureka.{{ .Values.namespace }}-{{ .Values.ingress.host | default "dev-petclinic.cloud" }}
+  - host: eureka.{{ .Values.namespace }}-{{ .Values.ingress.host | default "petclinic.cloud" }}
     http:
       paths:
       - path: /

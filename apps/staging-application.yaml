@@ -8,7 +8,7 @@ spec:
 
   source:
     repoURL: 'https://github.com/kiin21/petclinic-gitops.git' # Replace with your Git repository URL
-    targetRevision: main                                      # the branch/tag/commit hash to deploy
+    targetRevision: HEAD                                      # the branch/tag/commit hash to deploy
     path: .        # Path to the Helm chart in the repository
     helm:
       valueFiles:

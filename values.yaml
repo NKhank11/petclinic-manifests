@@ -1,5 +1,5 @@
 namespace: default
-imagePullPolicy: IfNotPresent
+imagePullPolicy: Always
 
 docker:
   repository: anhkhoa217

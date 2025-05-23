@@ -21,12 +21,17 @@ spec:
       initContainers:
         - name: check-{{ $name }}
           image: busybox:latest
-          command: ['sh', '-c', 'until wget --spider -q http://{{ $service.depend_on.name }}:{{ $service.depend_on.port }}; do echo waiting for config-server; sleep 3; done;']
+          command: ['sh', '-c', 'until wget --spider -q http://{{ $service.depend_on.name }}:{{ $service.depend_on.port }}; do echo waiting for {{ $service.depend_on.name }}; sleep 3; done;']
       {{- end }}
       containers:
         - name: {{ $name }}
-          image: "{{ $service.dockerRepository | default $.Values.docker.repository }}/{{ $service.image.name }}:{{ $service.image.tag | default "latest" }}"
-          imagePullPolicy: "{{ $.Values.imagePullPolicy | default "Always"}}"
+          image: >-
+            {{- if $service.image.digest }}
+              {{ $service.dockerRepository | default $.Values.docker.repository }}/{{ $service.image.name }}@{{ $service.image.digest }}
+            {{- else }}
+              {{ $service.dockerRepository | default $.Values.docker.repository }}/{{ $service.image.name }}:{{ $service.image.tag | default "latest" }}
+            {{- end }}
+          imagePullPolicy: {{ $.Values.imagePullPolicy | default "Always" }}
           ports:
             - containerPort: {{ $service.ports.targetPort | default 0 }}
           {{- if $service.env }}

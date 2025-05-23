@@ -1,36 +1,45 @@
 namespace: staging
 
 imageTag: &tag v1.1
+imageDigest: &digest sha256:1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef
 
 services:
   config-server:
     image:
       tag: *tag
+      digest: *digest
 
   discovery-server:
     image:
       tag: *tag
+      digest: *digest
 
   admin-server:
     image:
       tag: *tag
+      digest: *digest
 
   customers-service:
     image:
       tag: *tag
+      digest: *digest
 
   visits-service:
     image:
       tag: *tag
+      digest: *digest
 
   vets-service:
     image:
       tag: *tag
+      digest: *digest
 
   genai-service:
     image:
       tag: *tag
+      digest: *digest
 
   api-gateway:
     image:
       tag: *tag
+      digest: *digest

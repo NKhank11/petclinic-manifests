@@ -15,11 +15,11 @@ services:
 
   customers-service:
     image:
-      tag: v1.0
+      tag: e97eeb1
 
   visits-service:
     image:
-      tag: v1.0
+      tag: e97eeb1
 
   vets-service:
     image:

@@ -1,4 +1,4 @@
-namespace: preview-abc_com
+namespace: preview-abc-com
 
 services:
   config-server:

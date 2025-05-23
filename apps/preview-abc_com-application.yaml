@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: abc_com
+  name: abc-com
   namespace: argocd
 spec:
   project: default
@@ -13,11 +13,11 @@ spec:
     helm:
       valueFiles:
         - values.yaml                   # Default values
-        - environments/preview-abc_com-values.yaml  # Dev-specific overrides
+        - environments/preview-abc-com-values.yaml  # Dev-specific overrides
 
   destination:
     server: 'https://kubernetes.default.svc' # Kubernetes cluster API server
-    namespace: preview-abc_com                          # Namespace for the dev environment
+    namespace: preview-abc-com                          # Namespace for the dev environment
 
   syncPolicy:
     syncOptions:

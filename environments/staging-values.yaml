@@ -1,7 +1,7 @@
 namespace: staging
 
 imageTag: &tag v1.1
-imageDigest: &digest sha256:1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef
+imageDigest: &digest sha256:4584285b81075d7b16fbbed673ee1c64d6d978f14376e604d3ebbcfa093c596e
 
 services:
   config-server:

@@ -16,7 +16,6 @@ spec:
             use-forwarded-headers: "true"
           service:
             type: LoadBalancer
-            loadBalancerIP: 35.208.192.170
   destination:
     server: https://kubernetes.default.svc
     namespace: ingress-nginx

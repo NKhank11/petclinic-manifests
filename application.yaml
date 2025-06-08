@@ -7,7 +7,7 @@ spec:
   project: default
 
   source:
-    repoURL: 'https://github.com/kiin21/petclinic-manifests.git'
+    repoURL: 'https://github.com/NKhank11/petclinic-manifests.git'
     targetRevision: HEAD
     path: apps                               # child app manifests directory
   destination:

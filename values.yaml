@@ -2,7 +2,7 @@ namespace: default
 imagePullPolicy: IfNotPresent
 
 docker:
-  repository: anhkhoa217
+  repository: nkhank11
 
 ingress:
   name: spring-petclinic-ingress

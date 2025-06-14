@@ -1,8 +1,12 @@
 namespace: default
 imagePullPolicy: IfNotPresent
-
 docker:
   repository: nkhank11
+
+# Thêm configuration cho Zipkin
+zipkinUrl: &zipkinUrl
+  name: ZIPKIN_URL
+  value: http://zipkin:9411
 
 ingress:
   name: spring-petclinic-ingress
@@ -59,6 +63,7 @@ services:
     depend_on: *dependOnEureka
     env: 
       - *configServerEnv
+      - *zipkinUrl
 
   customers-service:
     ports:
@@ -71,6 +76,7 @@ services:
       <<: *defaultAutoscaling
     env: 
       - *configServerEnv
+      - *zipkinUrl  # Thêm Zipkin URL environment variable
 
   visits-service:
     ports:
@@ -83,6 +89,7 @@ services:
       <<: *defaultAutoscaling
     env: 
       - *configServerEnv
+      - *zipkinUrl
 
   vets-service:
     ports:
@@ -95,6 +102,7 @@ services:
       <<: *defaultAutoscaling
     env: 
       - *configServerEnv
+      - *zipkinUrl
 
   genai-service:
     ports:
@@ -107,6 +115,7 @@ services:
       <<: *defaultAutoscaling
     env: 
       - *configServerEnv
+      - *zipkinUrl
 
   api-gateway:
     ports:
@@ -119,6 +128,7 @@ services:
       <<: *defaultAutoscaling
     env: 
       - *configServerEnv
+      - *zipkinUrl
 
   tracing-server:
     dockerRepository: openzipkin
@@ -127,5 +137,5 @@ services:
       targetPort: 9411
     image:
       name: zipkin
-    env: 
-      - *configServerEnv 
+    # Không cần CONFIG_SERVER_URL cho Zipkin
+    env: []

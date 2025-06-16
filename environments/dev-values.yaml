@@ -42,6 +42,7 @@ services:
       name: spring-petclinic-grafana
       tag: latest
 
+
   prometheus-server:
     image:
       name: spring-petclinic-prometheus

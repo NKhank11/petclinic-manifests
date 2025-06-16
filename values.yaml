@@ -140,6 +140,13 @@ services:
   grafana-server:
     ports:
       port: 3030
-      targetPort: 3000
+      targetPort: 3030
     image:
       name: spring-petclinic-grafana-server
+
+  loki-server:
+    ports:
+      port: 3100
+      targetPort: 3100
+    image:
+      name: spring-peclinic-loki

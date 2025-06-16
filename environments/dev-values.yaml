@@ -32,3 +32,15 @@ services:
   api-gateway:
     image:
       tag: latest
+      
+  tracing-server:
+    image:
+      tag: latest
+
+  prometheus-server:
+    image:
+      tag: latest
+
+  grafana-server:
+    image:
+      tag: latest

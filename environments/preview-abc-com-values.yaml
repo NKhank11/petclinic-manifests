@@ -32,3 +32,18 @@ services:
   api-gateway:
     image:
       tag: v1.1
+      
+  tracing-server:
+    image:
+      tag: latest
+
+  grafana-server:
+    image:
+      name: spring-petclinic-grafana
+      tag: latest
+
+
+  prometheus-server:
+    image:
+      name: spring-petclinic-prometheus
+      tag: latest

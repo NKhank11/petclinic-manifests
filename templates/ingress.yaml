@@ -38,3 +38,33 @@ spec:
             name: {{ .Values.ingress.eurekaServiceName | default "discovery-server" }}
             port:
               number: {{ .Values.ingress.eurekaServicePort | default 8761 }}
+  - host: prometheus.{{ .Values.namespace }}-{{ .Values.ingress.host | default "petclinic.cloud" }}
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: prometheus-server
+            port:
+              number: 9090
+  - host: grafana.{{ .Values.namespace }}-{{ .Values.ingress.host | default "petclinic.cloud" }}
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: grafana-server
+            port:
+              number: 3030
+  - host: tracing.{{ .Values.namespace }}-{{ .Values.ingress.host | default "petclinic.cloud" }}
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: tracing-server
+            port:
+              number: 9411

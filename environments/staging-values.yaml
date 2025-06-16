@@ -42,3 +42,13 @@ services:
     image:
       tag: *tag
       digest: sha256:2f7d1eaa4f65f684f7aa8461b9f703adaab17204b33d633b86936f6745f11637
+
+  grafana-server:
+    image:
+      name: spring-petclinic-grafana
+      tag: latest
+
+  prometheus-server:
+    image:
+      name: spring-petclinic-prometheus
+      tag: latest

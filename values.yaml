@@ -149,4 +149,4 @@ services:
       port: 3100
       targetPort: 3100
     image:
-      name: spring-peclinic-loki
+      name: spring-petclinic-loki

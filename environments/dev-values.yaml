@@ -37,10 +37,12 @@ services:
     image:
       tag: latest
 
-  prometheus-server:
-    image:
-      tag: latest
-
   grafana-server:
     image:
+      name: spring-petclinic-grafana
+      tag: latest
+
+  prometheus-server:
+    image:
+      name: spring-petclinic-prometheus
       tag: latest

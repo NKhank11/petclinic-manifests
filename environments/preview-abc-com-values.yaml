@@ -3,35 +3,35 @@ namespace: preview-abc-com
 services:
   config-server:
     image:
-      tag: v1.3
+      tag: v1.5
 
   discovery-server:
     image:
-      tag: v1.3
+      tag: v1.5
 
   admin-server:
     image:
-      tag: v1.3
+      tag: v1.5
 
   customers-service:
     image:
-      tag: v1.3
+      tag: v1.5
 
   visits-service:
     image:
-      tag: v1.3
+      tag: v1.5
 
   vets-service:
     image:
-      tag: v1.3
+      tag: v1.5
 
   genai-service:
     image:
-      tag: v1.3
+      tag: v1.5
 
   api-gateway:
     image:
-      tag: v1.3
+      tag: v1.5
       
   tracing-server:
     image:
@@ -40,7 +40,7 @@ services:
   grafana-server:
     image:
       name: spring-petclinic-grafana
-      tag: latest
+      tag: v1.2
 
 
   prometheus-server:

@@ -3,23 +3,23 @@ namespace: preview-abc-com
 services:
   config-server:
     image:
-      tag: v1.5
+      tag: latest
 
   discovery-server:
     image:
-      tag: v1.5
+      tag: latest
 
   admin-server:
     image:
-      tag: v1.5
+      tag: latest
 
   customers-service:
     image:
-      tag: v1.5
+      tag: latest
 
   visits-service:
     image:
-      tag: v1.5
+      tag: latest
 
   vets-service:
     image:
@@ -27,11 +27,11 @@ services:
 
   genai-service:
     image:
-      tag: v1.5
+      tag: latest
 
   api-gateway:
     image:
-      tag: v1.5
+      tag: latest
       
   tracing-server:
     image:

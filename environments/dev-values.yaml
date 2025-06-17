@@ -19,7 +19,7 @@ services:
 
   visits-service:
     image:
-      tag: v1.6
+      tag: v1.7
 
   vets-service:
     image:

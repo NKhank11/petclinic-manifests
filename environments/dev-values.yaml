@@ -15,7 +15,7 @@ services:
 
   customers-service:
     image:
-      tag: v1.10
+      tag: v1.9
 
   visits-service:
     image:
@@ -27,11 +27,11 @@ services:
 
   genai-service:
     image:
-      tag: v1.6
+      tag: v1.9
 
   api-gateway:
     image:
-      tag: v1.7
+      tag: v1.9
       
   tracing-server:
     image:

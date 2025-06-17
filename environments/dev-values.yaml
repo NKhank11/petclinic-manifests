@@ -23,7 +23,7 @@ services:
 
   vets-service:
     image:
-      tag: v1.10
+      tag: v1.9
 
   genai-service:
     image:
@@ -50,4 +50,4 @@ services:
   loki-server:
     image:
       name: spring-petclinic-loki
-      tag: v1.6
+      tag: latest

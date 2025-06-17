@@ -15,23 +15,23 @@ services:
 
   customers-service:
     image:
-      tag: latest
+      tag: v1.6
 
   visits-service:
     image:
-      tag: latest
+      tag: v1.6
 
   vets-service:
     image:
-      tag: v1.5
+      tag: v1.6
 
   genai-service:
     image:
-      tag: latest
+      tag: v1.6
 
   api-gateway:
     image:
-      tag: latest
+      tag: v1.6
       
   tracing-server:
     image:
@@ -40,10 +40,9 @@ services:
   grafana-server:
     image:
       name: spring-petclinic-grafana
-      tag: v1.2
-
+      tag: v1.6
 
   prometheus-server:
     image:
       name: spring-petclinic-prometheus
-      tag: latest
+      tag: v1.6

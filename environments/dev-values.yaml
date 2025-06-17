@@ -40,12 +40,12 @@ services:
   grafana-server:
     image:
       name: spring-petclinic-grafana
-      tag: v1.6
+      tag: v1.8
 
   prometheus-server:
     image:
       name: spring-petclinic-prometheus
-      tag: v1.7
+      tag: v1.8
 
   loki-server:
     image:

@@ -41,6 +41,7 @@ services:
     image:
       name: spring-petclinic-grafana
       tag: latest
+      pullPolicy: Always
 
 
   prometheus-server:

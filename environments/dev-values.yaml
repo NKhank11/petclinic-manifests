@@ -23,7 +23,7 @@ services:
 
   vets-service:
     image:
-      tag: v1.6
+      tag: v1.5
 
   genai-service:
     image:

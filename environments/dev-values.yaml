@@ -50,4 +50,4 @@ services:
   loki-server:
     image:
       name: spring-petclinic-loki
-      tag: v1.6
+      tag: v1.7

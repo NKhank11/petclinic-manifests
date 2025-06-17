@@ -40,7 +40,7 @@ services:
   grafana-server:
     image:
       name: spring-petclinic-grafana
-      tag: v1.1
+      tag: v1.2
 
 
   prometheus-server:

@@ -15,7 +15,7 @@ services:
 
   customers-service:
     image:
-      tag: v1.6
+      tag: v1.10
 
   visits-service:
     image:

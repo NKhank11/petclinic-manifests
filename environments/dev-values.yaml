@@ -46,3 +46,8 @@ services:
     image:
       name: spring-petclinic-prometheus
       tag: v1.7
+
+  loki-server:
+    image:
+      name: spring-petclinic-loki
+      tag: v1.6

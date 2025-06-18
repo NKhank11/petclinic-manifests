@@ -19,11 +19,11 @@ services:
 
   visits-service:
     image:
-      tag: v1.10
+      tag: v1.13
 
   vets-service:
     image:
-      tag: v1.12
+      tag: v1.13
 
   genai-service:
     image:

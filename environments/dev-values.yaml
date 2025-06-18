@@ -15,7 +15,7 @@ services:
 
   customers-service:
     image:
-      tag: v1.9
+      tag: v1.12
 
   visits-service:
     image:
@@ -23,7 +23,7 @@ services:
 
   vets-service:
     image:
-      tag: v1.11
+      tag: v1.12
 
   genai-service:
     image:

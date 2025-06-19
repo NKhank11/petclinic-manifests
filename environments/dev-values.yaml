@@ -25,9 +25,9 @@ services:
     image:
       tag: v1.13
 
-  genai-service:
-    image:
-      tag: v1.13
+  # genai-service:
+  #   image:
+  #     tag: v1.13
 
   api-gateway:
     image:

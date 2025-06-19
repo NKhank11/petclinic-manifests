@@ -96,17 +96,17 @@ services:
     env: 
       - *configServerEnv
 
-  genai-service:
-    ports:
-      port: 8084
-      targetPort: 8084
-    image:
-      name: spring-petclinic-genai-service
-    depend_on: *dependOnEureka
-    autoscaling:
-      <<: *defaultAutoscaling
-    env: 
-      - *configServerEnv
+  # genai-service:
+  #   ports:
+  #     port: 8084
+  #     targetPort: 8084
+  #   image:
+  #     name: spring-petclinic-genai-service
+  #   depend_on: *dependOnEureka
+  #   autoscaling:
+  #     <<: *defaultAutoscaling
+  #   env: 
+  #     - *configServerEnv
 
   api-gateway:
     ports:
